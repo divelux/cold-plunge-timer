@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cold Plunge Timer: big digits, sound and a plunge log</title>
+<meta name="description" content="Free cold plunge timer. Pick 30 seconds to 5 minutes, tap Start, and read the big countdown from the tub. Beeps when time is up and keeps a private log.">
+<link rel="canonical" href="https://divelux.github.io/cold-plunge-timer/">
+<meta name="theme-color" content="#2a1b13">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DIVELUX">
+<meta property="og:title" content="Cold Plunge Timer">
+<meta property="og:description" content="A countdown you can read from the tub. 30 seconds to 5 minutes, a beep at the end, a count of plunges and a private log. Free, no sign-up.">
+<meta property="og:url" content="https://divelux.github.io/cold-plunge-timer/">
+<meta property="og:image" content="https://divelux.github.io/cold-plunge-timer/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Optional web fonts. Offline or blocked, the page falls back to system fonts. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Cold Plunge Timer",
+  "url": "https://divelux.github.io/cold-plunge-timer/",
+  "description": "A countdown timer for a cold plunge, from 30 seconds to 5 minutes, with large digits, a sound at the end, a count of plunges and a private log kept in the browser.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "isAccessibleForFree": true,
+  "inLanguage": "en-US",
+  "license": "https://opensource.org/licenses/MIT",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "DIVELUX", "url": "https://diveluxsaunahat.com" },
+  "publisher": { "@type": "Organization", "name": "DIVELUX", "url": "https://diveluxsaunahat.com" }
+}
+</script>
+</head>
+<body class="dvx">
+<a class="dvx-skip" href="#timer">Skip to the timer</a>
+
+<header class="dvx-wrap dvx-bar">
+  <a href="https://diveluxsaunahat.com" aria-label="DIVELUX home"><img src="assets/logo-dark.png" width="901" height="127" alt="DIVELUX"></a>
+  <a href="https://diveluxsaunahat.com/pages/sauna-tools">More free sauna tools</a>
+</header>
+
+<main>
+  <div class="dvx-wrap dvx-hero">
+    <h1>Cold Plunge Timer</h1>
+    <p class="dvx-lead">Pick a time, tap Start, get in. The digits are big enough to read from the tub, and it beeps when it is time to get out. Free, no sign-up.</p>
+  </div>
+
+  <section class="cpt-band" id="timer" aria-labelledby="cpt-timer-h">
+    <div class="dvx-wrap cpt-band-in">
+      <h2 class="dvx-sr" id="cpt-timer-h">Timer</h2>
+      <fieldset class="cpt-pick" data-o="pick">
+        <legend class="cpt-legend">Time in the water</legend>
+        <div class="dvx-chips" data-o="chips"></div>
+      </fieldset>
+
+      <div class="cpt-stage">
+        <p class="cpt-phase" data-o="phase">Ready when you are</p>
+        <p class="cpt-clock" role="timer" aria-live="off" data-o="clock">1:00</p>
+        <div class="cpt-track" aria-hidden="true"><i data-o="bar"></i></div>
+        <p class="cpt-next" data-o="next">The timer needs JavaScript.</p>
+        <p class="dvx-sr" aria-live="assertive" data-o="live"></p>
+      </div>
+
+      <div class="cpt-btns">
+        <button type="button" class="dvx-btn dvx-btn--go cpt-go" data-a="start">Start</button>
+        <button type="button" class="dvx-btn cpt-line" data-a="out" hidden>I'm out</button>
+        <button type="button" class="dvx-btn cpt-line" data-a="reset" hidden>Reset</button>
+      </div>
+
+      <div class="cpt-opts">
+        <label class="dvx-check"><input type="checkbox" data-i="sound" checked><span>Beep at the start and the end</span></label>
+        <label class="dvx-check"><input type="checkbox" data-i="getin" checked><span>5-second countdown to get in</span></label>
+      </div>
+      <p class="cpt-fine" data-o="wake">Keep the phone dry and where you can see it. The screen stays awake while the timer runs, where the browser allows it.</p>
+    </div>
+  </section>
+
+  <div class="dvx-wrap cpt-below">
+    <section class="cpt-log" aria-labelledby="cpt-log-h">
+      <h2 class="dvx-h" id="cpt-log-h">Your plunges</h2>
+      <dl class="dvx-stats cpt-stats">
+        <div class="dvx-stat"><dt>This session</dt><dd data-o="nsession">0</dd></div>
+        <div class="dvx-stat"><dt>Today</dt><dd data-o="ntoday">0</dd></div>
+        <div class="dvx-stat"><dt>Last 7 days</dt><dd data-o="nweek">0</dd></div>
+        <div class="dvx-stat"><dt>All time</dt><dd data-o="ntotal">0</dd></div>
+      </dl>
+      <div class="dvx-actions cpt-logbtns">
+        <button type="button" class="dvx-btn" data-a="newsession">Start a new session</button>
+      </div>
+      <div data-o="history"></div>
+      <p class="dvx-hint" data-o="lognote">The log is kept in this browser only. Nothing is sent anywhere.</p>
+      <div class="dvx-actions cpt-clear" data-o="clearbox" hidden>
+        <button type="button" class="dvx-btn" data-a="clear">Clear the log</button>
+        <button type="button" class="dvx-btn" data-a="clearyes" hidden>Yes, delete it all</button>
+        <button type="button" class="dvx-btn" data-a="clearno" hidden>Keep it</button>
+        <span class="dvx-status" role="status" data-o="clearstatus"></span>
+      </div>
+    </section>
+
+    <section class="cpt-safety" aria-labelledby="cpt-safe-h">
+      <h2 class="dvx-h" id="cpt-safe-h">Before you get in</h2>
+      <p>Cold water is hard on the body in the first seconds. The timer is a ceiling, not a target. Getting out early is always fine.</p>
+      <ul class="dvx-list">
+        <li><strong>Do not plunge alone.</strong> Have someone within reach who can help you out.</li>
+        <li><strong>Ease in.</strong> Go in feet first and keep your head above the water. A sudden gasp is a normal reaction to cold; breathe out slowly until it settles.</li>
+        <li><strong>Get out right away</strong> if you go numb, shiver hard, cannot catch your breath, feel dizzy, confused or faint, or have chest pain.</li>
+        <li><strong>Start short.</strong> If you are new to cold water, pick the shortest time. Colder water calls for less time, not more.</li>
+        <li><strong>Not after alcohol</strong>, and not when you are ill or worn out.</li>
+        <li><strong>Warm up slowly afterwards.</strong> Dry off, put on dry clothes and move around. Sit down if you feel lightheaded.</li>
+      </ul>
+      <p class="dvx-callout"><strong>Not medical advice.</strong> This page is a timer. It does not know your health and makes no claims about what cold water does for you. Cold water raises breathing, heart rate and blood pressure quickly. If you have a heart or blood pressure condition, take medication for either, are pregnant, or are unsure, talk to your doctor before you try a cold plunge.</p>
+      <p class="cpt-more">More on the risks: <a href="https://www.weather.gov/safety/coldwater">Cold Water Hazards and Safety</a> from the U.S. National Weather Service, and <a href="https://www.heart.org/en/news/2022/12/09/youre-not-a-polar-bear-the-plunge-into-cold-water-comes-with-risks">The plunge into cold water comes with risks</a> from American Heart Association News.</p>
+    </section>
+  </div>
+
+  <section class="dvx-wrap dvx-method" aria-labelledby="method-h">
+    <h2 class="dvx-h" id="method-h">How the timer works</h2>
+    <ul class="dvx-plain">
+      <li><strong>30 seconds to 5 minutes.</strong> The timer does not go longer. That limit is a cautious choice for a general tool, not a goal to work up to.</li>
+      <li><strong>The countdown keeps true time.</strong> It reads the clock rather than counting ticks, so it stays right if the phone lags or the tab was in the background.</li>
+      <li><strong>Sound needs one tap.</strong> Browsers only allow sound after you tap Start. On an iPhone the ring/silent switch mutes web audio.</li>
+      <li><strong>"I'm out" stops the clock</strong> and logs the time you were actually in. Under 5 seconds counts as a false start and is not logged.</li>
+      <li><strong>A session</strong> is the plunges since you opened the page or pressed "Start a new session".</li>
+      <li><strong>The log lives in your browser</strong> (local storage), up to the last 200 plunges. Clearing your browser data clears it.</li>
+    </ul>
+    <p>The code is open source under the MIT license.</p>
+  </section>
+</main>
+
+<footer class="dvx-foot">
+  <div class="dvx-wrap">
+    <p><strong>Made by DIVELUX</strong>, handmade wool sauna hats.</p>
+    <p><a href="https://diveluxsaunahat.com">diveluxsaunahat.com</a> · <a href="https://diveluxsaunahat.com/pages/sauna-tools">More free sauna tools</a></p>
+    <p>Cold Plunge Timer is free and open source under the MIT License. © 2026 DIVELUX Inc. Not medical advice.</p>
+  </div>
+</footer>
+
+<script src="plunge.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
